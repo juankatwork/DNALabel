@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DNASerial" Class="DNASerialDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=KARBONERO\SQLEXPRESS;Initial Catalog=DNASerial;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="DNALabelSync.Properties.Settings" SettingsPropertyName="DNASerialConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AssemblyLineInformation" Member="AssemblyLineInformations">
+    <Type Name="AssemblyLineInformation">
+      <Column Name="[Line No.]" Member="Line_No_" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Label Path]" Member="Label_Path" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="AssemblyLineInformation_Serial_No__Tracker" Member="Serial_No__Trackers" ThisKey="Line_No_" OtherKey="Assembly_Line_No_" Type="Serial_No__Tracker" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemMaster" Member="ItemMasters">
+    <Type Name="ItemMaster">
+      <Column Name="[Item Model Number]" Member="Item_Model_Number" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[UPC Code]" Member="UPC_Code" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Label Name]" Member="Label_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Engine Serial No. Identifier]" Member="Engine_Serial_No__Identifier" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Serial No. Tracker]" Member="Serial_No__Trackers">
+    <Type Name="Serial_No__Tracker">
+      <Column Name="[Serial No.]" Member="Serial_No_" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Production Date/Time]" Member="Production_Date_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Assembly Line No.]" Member="Assembly_Line_No_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Item Model Number]" Member="Item_Model_Number" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Engine Serial No.]" Member="Engine_Serial_No_" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Association Name="AssemblyLineInformation_Serial_No__Tracker" Member="AssemblyLineInformation" ThisKey="Assembly_Line_No_" OtherKey="Line_No_" Type="AssemblyLineInformation" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
