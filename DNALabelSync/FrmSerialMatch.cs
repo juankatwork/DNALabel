@@ -182,7 +182,7 @@ namespace DNALabelSync
 
         private void toolStripButtonExportCSV_Click(object sender, EventArgs e)
         {
-
+            ExportToCSV();
         }
 
         private void textBoxPreprintedBarcode_TextChanged(object sender, EventArgs e)
@@ -290,6 +290,10 @@ namespace DNALabelSync
             {
                 MessageBox.Show(string.Format("Error logging information. Error='{0}'", ex.Message), "Error Dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ExportToCSV()
+        {
+
         }
     }
 }
