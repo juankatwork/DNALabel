@@ -113,7 +113,7 @@ namespace DNALabelSync
         public string GetItemMasterSerialIdentifierAndUPC(string ItemModel,ref string UPC,ref string description)
         {
             var lItemMaster = (from i in m_dnaDataContext.ItemMasters
-                               where i.Engine_Serial_No__Identifier.ToLower() == ItemModel.ToLower()
+                               where i.Item_Model_Number.ToLower() == ItemModel.ToLower()
                                select i).FirstOrDefault();
             if (lItemMaster != null)
             {

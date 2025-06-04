@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -175,7 +176,9 @@ namespace DNALabelSync
             request.Accept = "application/pdf"; // omit this line to get PNG images back
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = zpl.Length;
-
+          //  request.Headers.Add("X-Page-Orientation", "Landscape");
+           // WebHeaderCollection headers = request.Headers;
+           // headers.Add("X-Page-Orientation", "Landscape");
             var requestStream = request.GetRequestStream();
             requestStream.Write(zpl, 0, zpl.Length);
             requestStream.Close();

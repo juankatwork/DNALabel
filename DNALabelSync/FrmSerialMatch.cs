@@ -55,6 +55,8 @@ namespace DNALabelSync
                 LoadSerialTracker();
                 IsDatabaseLoggedIn = true;
                 CanPrintLabel = true;
+                lblCurrentAssemblyLine.Text = GlblSettings.AssemblyLine;
+                lblCurrentModel.Text = GlblSettings.ModelNumber;
             }
 
         }
@@ -74,8 +76,12 @@ namespace DNALabelSync
         {
             string ErrorMessage  = string.Empty;
             string preprintedBarcode = textBoxPreprintedBarcode.Text.Replace("\r", "").Replace("\n", "");
+
             serialNo = new string(LabelText.Skip(6).Take(13).ToArray());
+            LogMsgToRichTextBox(string.Format("Serial No '{0}",serialNo));
             modelNo = new string(LabelText.Skip(21).Take(12).ToArray());
+            LogMsgToRichTextBox(string.Format("Model No. '{0}'",modelNo));
+
             string serialNoIdentifier = m_dataClass.GetItemMasterSerialIdentifierAndUPC(GlblSettings.ModelNumber, ref upc,ref description);
             if (checkBoxTestMode.Checked) { return true; }
 
@@ -210,7 +216,7 @@ namespace DNALabelSync
                     {
                         this.ActiveControl = textBoxEngineBarcode;
                         textBoxProductionDate.Text = dateTimePickerShipDate.Value.ToString();
-                        LogMsgToRichTextBox(string.Format("Scan {0}", scanLabel));
+                        
                     }
                 }
             }
@@ -218,7 +224,7 @@ namespace DNALabelSync
             {
                 msg = string.Format("The system can not print labels right now. Please check previous error message.");
                 LogMsgToRichTextBox(msg);
-                MessageBox.Show(msg);
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -248,11 +254,13 @@ namespace DNALabelSync
                                 textBoxModelNo.Text = modelNo;
                                 IsHandle = true;
                                 textBoxEngineBarcode.Text = serialNo;
-                                LogMsgToRichTextBox(string.Format("Generating Label {0}", serialNo));
+                               
                                 preprintedBarcode = textBoxPreprintedBarcode.Text.Replace("\n", "").Replace("\r", "");
+                                LogMsgToRichTextBox(string.Format("Generating Label {0}", preprintedBarcode));
 
                                 //string modelNo, string serialNo, string departmentNo, string engineSerial, string upc,string description)
-                                GenerateLabel(modelNo, preprintedBarcode, "D25P",serialNo  ,upc, description);
+                                GenerateLabel(GlblSettings.ModelNumber, preprintedBarcode, "D25P",serialNo  ,upc, description);
+                                dataGridViewLabelHistory.DataSource = m_dataClass.LoadSerialTracker();
                                 dataGridViewLabelHistory.Refresh();
                                 this.ActiveControl = textBoxPreprintedBarcode;
                             }
@@ -272,7 +280,7 @@ namespace DNALabelSync
                 {
                     msg = string.Format("The system can not print labels right now. Please check previous error message.");
                     LogMsgToRichTextBox(msg);
-                    MessageBox.Show(msg);
+                    MessageBox.Show(msg,"Error",   MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
         }
