@@ -75,12 +75,41 @@ namespace DNALabelSync
             m_labelType = type;
             
         }
-      
+        public void SplitDescription(string description,ref string description1, ref string description2)
+        {
+            int stringMaxLength = 45;
+            int currStringLength = 0;
+
+            string[] words = description.Split(' ');
+            foreach (string word in words)
+            {
+                if (currStringLength == 0)
+                {
+                    currStringLength = word.Length;
+                    description1 = word;
+
+                }
+                else
+                {
+                    if ((currStringLength + word.Length) <= stringMaxLength)
+                    {
+                        description1 += string.Format(" {0}", word);
+                        currStringLength = description1.Length;
+                    }
+                    else
+                    {   currStringLength = currStringLength + word.Length;
+                        description2 += string.Format("{0} ",word);
+                    }
+                }
+            }
+        }
         public void GetLabel(string fileName, string modelNo, string departmentNo, string serialNo, string upc, string description)
         { 
             string ErrorMessage = string.Empty;
             string label = string.Empty;
             string url = string.Empty;
+            string description1 = string.Empty;
+            string description2 = string.Empty;
             if (!string.IsNullOrEmpty(m_labelPath))
             {
                 switch (m_labelType)
@@ -89,7 +118,8 @@ namespace DNALabelSync
                         label = string.Format(File.ReadAllText(m_labelPath), departmentNo, modelNo, serialNo);
                         break;
                     case "LabelTypeUPC":
-                        label = string.Format(File.ReadAllText(m_labelPath), modelNo, description , serialNo,upc);
+                        SplitDescription(description,ref description1,ref description2);
+                        label = string.Format(File.ReadAllText(m_labelPath), modelNo, description1,description2 , serialNo,upc);
                         break;
                 }
             }
