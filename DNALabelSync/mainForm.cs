@@ -132,5 +132,13 @@ namespace DNALabelSync
         {
 
         }
+
+        private void toolStripButtonAbout_Click(object sender, EventArgs e)
+        {
+            FrmAbout about = new FrmAbout();
+           
+            about.MdiParent = this;
+            about.Show();
+        }
     }
 }

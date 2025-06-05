@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</InstallUrl>
     <UpdateUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</UpdateUrl>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -126,6 +126,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DNASerialDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddAssemblyLineInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAddAssemblyLineInfo.resx">
       <DependentUpon>FrmAddAssemblyLineInfo.cs</DependentUpon>
     </EmbeddedResource>

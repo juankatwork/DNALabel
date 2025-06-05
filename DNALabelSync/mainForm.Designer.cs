@@ -38,6 +38,8 @@ namespace DNALabelSync
             this.toolStripButtonLoadAssemblyLine = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonLoadItemMaster = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,9 @@ namespace DNALabelSync
             this.toolStripSeparator2,
             this.toolStripButtonLoadAssemblyLine,
             this.toolStripSeparator3,
-            this.toolStripButtonLoadItemMaster});
+            this.toolStripButtonLoadItemMaster,
+            this.toolStripSeparator4,
+            this.toolStripButtonAbout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
@@ -109,6 +113,20 @@ namespace DNALabelSync
             this.toolStripButtonLoadItemMaster.Text = "Item &Master";
             this.toolStripButtonLoadItemMaster.Click += new System.EventHandler(this.toolStripButtonLoadItemMaster_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripButtonAbout
+            // 
+            this.toolStripButtonAbout.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAbout.Image")));
+            this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAbout.Name = "toolStripButtonAbout";
+            this.toolStripButtonAbout.Size = new System.Drawing.Size(73, 24);
+            this.toolStripButtonAbout.Text = "About...";
+            this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +157,8 @@ namespace DNALabelSync
         private System.Windows.Forms.ToolStripButton toolStripButtonLoadAssemblyLine;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButtonLoadItemMaster;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAbout;
     }
 }
 
