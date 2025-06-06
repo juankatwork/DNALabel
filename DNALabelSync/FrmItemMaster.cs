@@ -16,6 +16,11 @@ namespace DNALabelSync
     {
         private DatabaseClass m_dataClass = new DatabaseClass();
         FrmAddItemMaster m_frmAddItemMaster = null;
+        public GlobalSettings GlblSettings
+        {
+            set;
+            get;
+        }
         public FrmItemMaster()
         {
             InitializeComponent();
@@ -25,6 +30,7 @@ namespace DNALabelSync
 
         private void FrmItemMaster_Load(object sender, EventArgs e)
         {
+            m_dataClass.Connect(GlblSettings.ConnectionString);
             LoadItemMaster();
         }
         private void LoadItemMaster()

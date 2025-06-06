@@ -14,6 +14,11 @@ namespace DNALabelSync
     {
         DatabaseClass m_dataClass = new DatabaseClass();
         public event System.EventHandler OnOkClicked;
+        public GlobalSettings GlblSettings
+        {
+            set;
+            get;
+        }
         public FrmAddAssemblyLineInfo()
         {
             InitializeComponent();
@@ -21,7 +26,7 @@ namespace DNALabelSync
 
         private void FrmAddAssemblyLineInfo_Load(object sender, EventArgs e)
         {
-
+            m_dataClass.Connect(GlblSettings.ConnectionString);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
