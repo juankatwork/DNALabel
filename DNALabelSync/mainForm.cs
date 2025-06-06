@@ -53,7 +53,7 @@ namespace DNALabelSync
                 if (m_frmItemMaster == null || m_frmItemMaster.IsDisposed)
                 {
                     m_frmItemMaster = new  FrmItemMaster();
-
+                    m_frmItemMaster.GlblSettings = m_GlobalSettings;
                     m_frmItemMaster.MdiParent = this;
                     m_frmItemMaster.Show();
                 }
@@ -69,7 +69,7 @@ namespace DNALabelSync
                 if (m_frmAssemblyLine == null || m_frmAssemblyLine.IsDisposed)
                 {
                     m_frmAssemblyLine = new FrmAssemblyLineInformation();
-
+                    m_frmAssemblyLine.GlblSettings = m_GlobalSettings;
                     m_frmAssemblyLine.MdiParent = this;
                     m_frmAssemblyLine.Show();
                 }

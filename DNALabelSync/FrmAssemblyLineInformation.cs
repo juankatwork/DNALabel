@@ -14,11 +14,17 @@ namespace DNALabelSync
     {
         private DatabaseClass m_dataClass = new DatabaseClass();
         FrmAddAssemblyLineInfo m_frmAssemblyLineInfo = null;
+        public GlobalSettings GlblSettings
+        {
+            set;
+            get;
+        }
         public FrmAssemblyLineInformation()
         {
             InitializeComponent();
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            m_dataClass.Connect(GlblSettings.ConnectionString);
         }
 
         private void FrmAssemblyLineInformation_Load(object sender, EventArgs e)

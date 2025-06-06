@@ -14,9 +14,15 @@ namespace DNALabelSync
     {
         DatabaseClass m_dataClass = new DatabaseClass();
         public event System.EventHandler OnOkClicked;
+        public GlobalSettings GlblSettings
+        {
+            set;
+            get;
+        }
         public FrmAddItemMaster()
         {
             InitializeComponent();
+            m_dataClass.Connect(GlblSettings.ConnectionString);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
