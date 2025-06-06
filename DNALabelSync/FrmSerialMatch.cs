@@ -33,11 +33,12 @@ namespace DNALabelSync
 
         private void LoadSerialTracker()
         {
-            m_dataClass.Connect(GlblSettings.ConnectionString);
+           
             dataGridViewLabelHistory.DataSource = m_dataClass.LoadSerialTracker();
         }
         private void FrmSerialMatch_Load(object sender, EventArgs e)
         {
+            m_dataClass.Connect(GlblSettings.ConnectionString);
             textBoxProductionDate.Text = DateTime.Today.ToShortDateString();
             LogMsgToRichTextBox(string.Format("Production Date set to {0}", textBoxProductionDate.Text));
             if (false == m_dataClass.Connect(GlblSettings.ConnectionString))

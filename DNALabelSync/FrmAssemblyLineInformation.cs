@@ -24,11 +24,12 @@ namespace DNALabelSync
             InitializeComponent();
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightCyan;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            m_dataClass.Connect(GlblSettings.ConnectionString);
+         
         }
 
         private void FrmAssemblyLineInformation_Load(object sender, EventArgs e)
         {
+            m_dataClass.Connect(GlblSettings.ConnectionString);
             LoadAssemblyLineInfo();
         }
        
