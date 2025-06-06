@@ -130,7 +130,7 @@ namespace DNALabelSync
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-
+            toolStripStatusLabel1.Text = string.Format(m_GlobalSettings.ConnectionString);
         }
 
         private void toolStripButtonAbout_Click(object sender, EventArgs e)

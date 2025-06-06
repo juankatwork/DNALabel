@@ -38,7 +38,14 @@ namespace DNALabelSync
         }
         private void FrmSerialMatch_Load(object sender, EventArgs e)
         {
-            m_dataClass.Connect(GlblSettings.ConnectionString);
+            try
+            {
+                m_dataClass.Connect(GlblSettings.ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             textBoxProductionDate.Text = DateTime.Today.ToShortDateString();
             LogMsgToRichTextBox(string.Format("Production Date set to {0}", textBoxProductionDate.Text));
             if (false == m_dataClass.Connect(GlblSettings.ConnectionString))

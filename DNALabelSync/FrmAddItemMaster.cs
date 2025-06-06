@@ -22,7 +22,7 @@ namespace DNALabelSync
         public FrmAddItemMaster()
         {
             InitializeComponent();
-            m_dataClass.Connect(GlblSettings.ConnectionString);
+          
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -51,7 +51,14 @@ namespace DNALabelSync
 
         private void FrmAddItemMaster_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                m_dataClass.Connect(GlblSettings.ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

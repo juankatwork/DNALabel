@@ -26,7 +26,14 @@ namespace DNALabelSync
 
         private void FrmAddAssemblyLineInfo_Load(object sender, EventArgs e)
         {
-            m_dataClass.Connect(GlblSettings.ConnectionString);
+            try
+            {
+                m_dataClass.Connect(GlblSettings.ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
