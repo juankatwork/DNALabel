@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</InstallUrl>
     <UpdateUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</UpdateUrl>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
