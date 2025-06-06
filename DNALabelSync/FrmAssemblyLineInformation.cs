@@ -57,6 +57,7 @@ namespace DNALabelSync
                 m_frmAssemblyLineInfo.GlblSettings = GlblSettings;
                 m_frmAssemblyLineInfo.MdiParent = this.MdiParent;
                 m_frmAssemblyLineInfo.OnOkClicked += M_frmAssemblyLineInfo_OnOkClicked;
+                m_frmAssemblyLineInfo.Show();
 
             }
             m_frmAssemblyLineInfo.Focus();

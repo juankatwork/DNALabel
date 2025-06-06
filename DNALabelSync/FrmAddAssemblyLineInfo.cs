@@ -29,6 +29,7 @@ namespace DNALabelSync
             try
             {
                 m_dataClass.Connect(GlblSettings.ConnectionString);
+                toolStripStatusLabel1.Text = GlblSettings.ConnectionString;
             }
             catch (Exception ex)
             {
