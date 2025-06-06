@@ -54,7 +54,7 @@ namespace DNALabelSync
             if (m_frmAssemblyLineInfo == null || m_frmAssemblyLineInfo.IsDisposed)
             {
                 m_frmAssemblyLineInfo = new FrmAddAssemblyLineInfo();
-
+                m_frmAssemblyLineInfo.GlblSettings = GlblSettings;
                 m_frmAssemblyLineInfo.MdiParent = this.MdiParent;
                 m_frmAssemblyLineInfo.OnOkClicked += M_frmAssemblyLineInfo_OnOkClicked;
 
