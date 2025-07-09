@@ -146,8 +146,18 @@ namespace DNALabelSync
                 slt.Engine_Serial_No_ = engineSerial;
                 slt.Serial_No_ = serialNo;
                 slt.Production_Date_Time = DateTime.Parse(textBoxProductionDate.Text);
+                lblStatus.ForeColor = Color.Black;
                 if (!m_dataClass.InsertSerialInfo(slt))
+                {
+                    lblStatus.Text = "Failure";
+                    lblStatus.ForeColor = Color.Red;
                     throw (new Exception(m_dataClass.ErrorMessage));
+                }
+                else
+                {
+                    lblStatus.ForeColor = Color.DarkGreen;
+                    lblStatus.Text = "Success";
+                }
             }
             catch(Exception ex)
             {
@@ -309,6 +319,11 @@ namespace DNALabelSync
             }
         }
         private void ExportToCSV()
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
         }
