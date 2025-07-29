@@ -208,7 +208,7 @@ PublishScripts/
 
 #Application files -juan 
 #Application Files/
-win-x64/
+libcef.dll.deploy
 win-x86/
 # Microsoft Azure Build Output
 csx/
