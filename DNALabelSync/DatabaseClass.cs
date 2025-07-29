@@ -53,6 +53,30 @@ namespace DNALabelSync
                 return string.Empty;
             }
         }
+
+        public string GetAssemblyLineLocation(int assemblyLineNo)
+        {
+            try
+            {
+                var query = (from i in m_dnaDataContext.AssemblyLineInformations
+                             where i.Line_No_ == assemblyLineNo
+                             select i).FirstOrDefault();
+
+                if (query != null)
+                {
+                    return query.Location;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = string.Format("Source={0}, Message={1}.", ex.Source, ex.Message);
+                return string.Empty;
+            }
+        }
         public List<AssemblyLineInformation> LoadAssemblyLineInfo()
         {
             try
@@ -224,7 +248,25 @@ namespace DNALabelSync
                 return false;
             }
         }
-     
+
+        public bool EngineNoExist(string EngineNo)
+        {
+            try
+            {
+                var lEngineNo = (from i in m_dnaDataContext.Serial_No__Trackers
+                                 where i.Engine_Serial_No_ == EngineNo
+                                 select i).FirstOrDefault();
+                if (lEngineNo != null)
+                    return true;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = string.Format("Source={0}, Message={1}.", ex.Source, ex.Message);
+                return false;
+            }
+        }
+
         public bool InsertSerialInfo(Serial_No__Tracker snt)
         {
             ErrorMessage = "";

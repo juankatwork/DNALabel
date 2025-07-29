@@ -25,7 +25,9 @@ namespace DNALabelSync
         private string m_CurrLabelSize;
         private bool m_SendToPrinter;
         private string m_Label3x2Url = @"http://api.labelary.com/v1/printers/8dpmm/labels/3x2/0/";
-        private string m_Label4x6Url = @"http://api.labelary.com/v1/printers/8dpmm/labels/4x6/0/";
+        private string m_Label6x4Url = @"http://api.labelary.com/v1/printers/8dpmm/labels/6x4/0/";
+        private String m_CurrentPrintOption;
+        private bool m_UseIronPrintPDFLibrary;
 
         [CategoryAttribute("General Configuration"), DescriptionAttribute("Connection String")]
         public string ConnectionString { set; get; }
@@ -43,10 +45,10 @@ namespace DNALabelSync
         }
 
         [CategoryAttribute("General Configuration"), DescriptionAttribute("Label 4x6 Url")]
-        public string Label4x6Url
+        public string Label6x4Url
         {
-            get { return m_Label4x6Url; }
-            set { m_Label4x6Url = value; }
+            get { return m_Label6x4Url; }
+            set { m_Label6x4Url = value; }
         }
         [CategoryAttribute("Daily Configuration"), DescriptionAttribute("Assembly Line")]
         public string AssemblyLine
@@ -66,22 +68,33 @@ namespace DNALabelSync
             set { m_PrinterName = value; }
             get { return m_PrinterName; }
         }
-
-         
-        [CategoryAttribute("Daily Configuration"), DescriptionAttribute("Send to Printer")]
-        public bool SendToPrinter
+        [CategoryAttribute("Daily Configuration"), DescriptionAttribute("Use Iron Print PDF")]
+        public bool UsuIronPrintPDF
         {
-            set { m_SendToPrinter = value; }
-            get { return m_SendToPrinter; }
+            set { m_UseIronPrintPDFLibrary = value; }
+            get { return m_UseIronPrintPDFLibrary; }
         }
+
+
+
         [Browsable(true)]
-        [DefaultValue("LabelType1")]
+        [DefaultValue("Standard3x2")]
         [CategoryAttribute("Daily Configuration")]
         [TypeConverter(typeof(LabelOptions))]
         public string CurrentLabelOutput
         {
             get { return m_CurrLabelOutput; }
             set { m_CurrLabelOutput = value; }
+        }
+
+        [Browsable(true)]
+        [DefaultValue("PDFPrinter")]
+        [CategoryAttribute("Daily Configuration")]
+        [TypeConverter(typeof(PrintOptions))]
+        public string CurrentPrintOption
+        {
+            get { return m_CurrentPrintOption; }
+            set { m_CurrentPrintOption = value; }
         }
 
         [Browsable(true)]
@@ -236,8 +249,8 @@ namespace DNALabelSync
     {
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(new string[] {"LabelType1",
-                                                 "LabelTypeUPC",
+            return new StandardValuesCollection(new string[] {"Standard3x2",
+                                                 "6x4UPC",
                                                  "LabelType3"});
 
         }
@@ -260,6 +273,27 @@ namespace DNALabelSync
             return new StandardValuesCollection(new string[] {"3x2",
                                                  "4x6"
                                                  });
+
+        }
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            //true means show a combobox
+            return true;
+        }
+
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+    }
+
+    class PrintOptions : System.ComponentModel.StringConverter
+    {
+        public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(new string[] {"ZPLSendPrinter",
+                                                 "PDFPrinter",
+                                                 "PDF"});
 
         }
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)

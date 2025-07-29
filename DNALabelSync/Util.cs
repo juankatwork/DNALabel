@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.TypeConverter;
+using IronPdf;
+using System.Drawing.Printing;
 
 namespace DNALabelSync
 {
@@ -114,20 +116,23 @@ namespace DNALabelSync
             {
                 switch (m_labelType)
                 {
-                    case "LabelType1":
+                    case "Standard3x2":
                         label = string.Format(File.ReadAllText(m_labelPath), departmentNo, modelNo, serialNo);
                         break;
-                    case "LabelTypeUPC":
+                    case "6x4UPC":
                         SplitDescription(description,ref description1,ref description2);
                         label = string.Format(File.ReadAllText(m_labelPath), modelNo, description1,description2 , serialNo,upc);
                         break;
+                    default:
+                        throw new Exception(string.Format("LabelType '{0}' not supported",m_labelType));
+
                 }
             }
             else
             {
                 throw new Exception("You must setup the label path.");
             }
-            if (GlblSettings.SendToPrinter)
+            if (GlblSettings.CurrentPrintOption == "ZPLSendPrinter")
             {
                 if (File.Exists(fileName + ".txt"))
                 {
@@ -154,16 +159,54 @@ namespace DNALabelSync
                 }
                 else
                 {
-                    url = GlblSettings.Label4x6Url;
+                    url = GlblSettings.Label6x4Url;
                 }
                 if (!SendLabelRequest(fileName,url, label, ref ErrorMessage))
                 {
                     MessageBox.Show(ErrorMessage);
                 }
+                else
+                {
+                    if (GlblSettings.CurrentPrintOption == "PDFPrinter")
+                    {
+                        if (!SendToPrinter(fileName, 10, ref ErrorMessage))
+                            MessageBox.Show(ErrorMessage);
+                    }
+                }
             }
 
         }
-        public  bool SendToPrinter(string fileName, int labelDelay, ref string ErrorMessage)
+
+        public bool SendToPrinter(string fileName, int labelDelay, ref string ErrorMessage)
+        {
+
+          if (GlblSettings.UsuIronPrintPDF)
+            {
+                return SendToPrinterIron(fileName, labelDelay, ref ErrorMessage);
+            }
+          else
+            {
+                return SendToPrinter2(fileName, labelDelay, ref ErrorMessage);
+            }
+        }
+
+        public bool SendToPrinterIron(string fileName, int labelDelay, ref string ErrorMessage)
+        {
+            PdfDocument pdf = PdfDocument.FromFile(fileName);
+            try
+            {
+                var pd = pdf.GetPrintDocument();
+                pd.PrinterSettings.PrinterName = GlblSettings.PrinterName;
+                pd.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            return true;
+        }
+        public  bool SendToPrinter2(string fileName, int labelDelay, ref string ErrorMessage)
         {
             try
             {
@@ -172,7 +215,7 @@ namespace DNALabelSync
                 info.FileName = fileName; // @"c:\output.pdf";
                 info.CreateNoWindow = true;
                 info.WindowStyle = ProcessWindowStyle.Normal;
-
+                info.UseShellExecute = true;
                 Process p = new Process();
                 p.StartInfo = info;
                 p.Start();
@@ -185,7 +228,7 @@ namespace DNALabelSync
                 if (false == p.CloseMainWindow())
                     p.Kill();
 
-                return true;
+                return true; 
             }
             catch (Exception ex)
             {   if (ex.Message.Contains("has exited")) {

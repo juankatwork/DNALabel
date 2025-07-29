@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DNALabelSync
@@ -81,6 +82,14 @@ namespace DNALabelSync
             }
             return false;
         }
+        private bool ValidateDuplicateEngineLabel(string labelText)
+        {
+            if (m_dataClass.EngineNoExist(labelText))
+            {
+                return true;
+            }
+            return false;
+        }
         private bool ValidateEngineLabel(string LabelText,ref string serialNo,ref string modelNo, ref string upc, ref string description)
         {
             string ErrorMessage  = string.Empty;
@@ -92,9 +101,21 @@ namespace DNALabelSync
             LogMsgToRichTextBox(string.Format("Model No. '{0}'",modelNo));
 
             string serialNoIdentifier = m_dataClass.GetItemMasterSerialIdentifierAndUPC(GlblSettings.ModelNumber, ref upc,ref description);
-            if (checkBoxTestMode.Checked) { return true; }
 
-            
+            if (checkBoxTestMode.Checked) { 
+                return true; 
+            }
+
+            if (ValidateDuplicateEngineLabel(serialNo))
+            {
+                ErrorMessage = string.Format("Engine SerialNo '{0}' exist in database.", serialNo);
+                LogMsgToRichTextBox(ErrorMessage);
+                MessageBox.Show(ErrorMessage, "Error Dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CanPrintLabel = false;
+                return false;
+
+            }
+
             if (serialNoIdentifier != string.Empty)
             {
                 if (serialNoIdentifier != modelNo)
@@ -142,7 +163,7 @@ namespace DNALabelSync
                 Serial_No__Tracker slt = new Serial_No__Tracker();
                 slt.Assembly_Line_No_ = int.Parse(GlblSettings.AssemblyLine);
                 slt.Item_Model_Number = GlblSettings.ModelNumber;
-                slt.Location = "";
+                slt.Location = m_dataClass.GetAssemblyLineLocation((int)slt.Assembly_Line_No_);
                 slt.Engine_Serial_No_ = engineSerial;
                 slt.Serial_No_ = serialNo;
                 slt.Production_Date_Time = DateTime.Parse(textBoxProductionDate.Text);
