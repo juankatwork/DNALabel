@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.TypeConverter;
-using IronPdf;
-using System.Drawing.Printing;
 
 namespace DNALabelSync
 {
@@ -190,27 +190,29 @@ namespace DNALabelSync
             }
         }
 
+        
+
         public bool SendToPrinterIron(string fileName, int labelDelay, ref string ErrorMessage)
         {
-            PdfDocument pdf = PdfDocument.FromFile(fileName);
+         
             try
-            {
-                var pd = pdf.GetPrintDocument();
-                pd.PrinterSettings.PrinterName = GlblSettings.PrinterName;
-                pd.Print();
+            {//https://web.archive.org/web/20150303123140/http://support.microsoft.com/kb/322091
+                RawPrinterHelper.SendFileToPrinter(GlblSettings.PrinterName, fileName);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return false;
             }
+           
             return true;
         }
         public  bool SendToPrinter2(string fileName, int labelDelay, ref string ErrorMessage)
         {
             try
             {
-                ProcessStartInfo info = new ProcessStartInfo();
+                System.IO.File.Copy(fileName, GlblSettings.PrinterName);
+                /*ProcessStartInfo info = new ProcessStartInfo();
                 info.Verb = "print";
                 info.FileName = fileName; // @"c:\output.pdf";
                 info.CreateNoWindow = true;
@@ -227,7 +229,7 @@ namespace DNALabelSync
                     System.Threading.Thread.Sleep(labelDelay);
                 if (false == p.CloseMainWindow())
                     p.Kill();
-
+                */
                 return true; 
             }
             catch (Exception ex)
@@ -238,6 +240,8 @@ namespace DNALabelSync
                 return false;
             }
         }
+
+       
         public bool SendLabelRequest(string fileName,string url , string label, ref string ErrorMessage)
         {
             byte[] zpl = Encoding.UTF8.GetBytes(label);

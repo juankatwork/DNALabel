@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -347,6 +348,17 @@ namespace DNALabelSync
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
+        }
+
+        private void toolStripButtonPrinter_Click(object sender, EventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.PrinterSettings = new PrinterSettings();
+            if (DialogResult.OK == pd.ShowDialog(this))
+            {
+                // Send a printer-specific to the printer.
+                RawPrinterHelper.SendFileToPrinter(GlblSettings.PrinterName, @"C:\work\Labels\LJK.pdf");
+            }
         }
     }
 }
