@@ -55,6 +55,7 @@ namespace DNALabelSync
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonPrinter = new System.Windows.Forms.ToolStripButton();
             this.tabControlResult = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.richTextBoxMessages = new System.Windows.Forms.RichTextBox();
@@ -64,7 +65,6 @@ namespace DNALabelSync
             this.dataGridViewLabelHistory = new System.Windows.Forms.DataGridView();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonExportCSV = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPrinter = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -84,7 +84,6 @@ namespace DNALabelSync
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -96,9 +95,8 @@ namespace DNALabelSync
             // 
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip3);
             this.splitContainer1.Panel2.Controls.Add(this.tabControlResult);
-            this.splitContainer1.Size = new System.Drawing.Size(1924, 689);
-            this.splitContainer1.SplitterDistance = 1001;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(1443, 560);
+            this.splitContainer1.SplitterDistance = 750;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -120,11 +118,9 @@ namespace DNALabelSync
             this.groupBox1.Controls.Add(this.textBoxEngineBarcode);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(16, 178);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 145);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(981, 496);
+            this.groupBox1.Size = new System.Drawing.Size(735, 403);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Label Information";
@@ -133,9 +129,10 @@ namespace DNALabelSync
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(257, 446);
+            this.lblStatus.Location = new System.Drawing.Point(193, 362);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(125, 31);
+            this.lblStatus.Size = new System.Drawing.Size(101, 26);
             this.lblStatus.TabIndex = 15;
             this.lblStatus.Text = "Ready...";
             // 
@@ -143,30 +140,28 @@ namespace DNALabelSync
             // 
             this.LblLastScanLabel.AutoSize = true;
             this.LblLastScanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLastScanLabel.Location = new System.Drawing.Point(256, 373);
-            this.LblLastScanLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblLastScanLabel.Location = new System.Drawing.Point(192, 303);
             this.LblLastScanLabel.Name = "LblLastScanLabel";
-            this.LblLastScanLabel.Size = new System.Drawing.Size(80, 31);
+            this.LblLastScanLabel.Size = new System.Drawing.Size(65, 26);
             this.LblLastScanLabel.TabIndex = 14;
             this.LblLastScanLabel.Text = "Label";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(95, 379);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(71, 308);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 25);
+            this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Last Label";
             // 
             // buttonClearFields
             // 
             this.buttonClearFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClearFields.Location = new System.Drawing.Point(691, 433);
-            this.buttonClearFields.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonClearFields.Location = new System.Drawing.Point(518, 352);
+            this.buttonClearFields.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonClearFields.Name = "buttonClearFields";
-            this.buttonClearFields.Size = new System.Drawing.Size(182, 50);
+            this.buttonClearFields.Size = new System.Drawing.Size(136, 41);
             this.buttonClearFields.TabIndex = 12;
             this.buttonClearFields.Text = "&Clear fields";
             this.buttonClearFields.UseVisualStyleBackColor = true;
@@ -176,10 +171,9 @@ namespace DNALabelSync
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 308);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(40, 250);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 25);
+            this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Production Date:";
             // 
@@ -189,10 +183,9 @@ namespace DNALabelSync
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxProductionDate.Enabled = false;
             this.textBoxProductionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxProductionDate.Location = new System.Drawing.Point(262, 308);
-            this.textBoxProductionDate.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxProductionDate.Location = new System.Drawing.Point(196, 250);
             this.textBoxProductionDate.Name = "textBoxProductionDate";
-            this.textBoxProductionDate.Size = new System.Drawing.Size(709, 30);
+            this.textBoxProductionDate.Size = new System.Drawing.Size(532, 26);
             this.textBoxProductionDate.TabIndex = 10;
             // 
             // textBoxModelNo
@@ -201,21 +194,19 @@ namespace DNALabelSync
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxModelNo.Enabled = false;
             this.textBoxModelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxModelNo.Location = new System.Drawing.Point(262, 218);
-            this.textBoxModelNo.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxModelNo.Location = new System.Drawing.Point(196, 177);
             this.textBoxModelNo.Multiline = true;
             this.textBoxModelNo.Name = "textBoxModelNo";
-            this.textBoxModelNo.Size = new System.Drawing.Size(712, 58);
+            this.textBoxModelNo.Size = new System.Drawing.Size(534, 48);
             this.textBoxModelNo.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(95, 224);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(71, 182);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 25);
+            this.label5.Size = new System.Drawing.Size(80, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Model No.";
             // 
@@ -225,11 +216,10 @@ namespace DNALabelSync
             this.textBoxPreprintedBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPreprintedBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPreprintedBarcode.Location = new System.Drawing.Point(262, 80);
-            this.textBoxPreprintedBarcode.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPreprintedBarcode.Location = new System.Drawing.Point(196, 65);
             this.textBoxPreprintedBarcode.Multiline = true;
             this.textBoxPreprintedBarcode.Name = "textBoxPreprintedBarcode";
-            this.textBoxPreprintedBarcode.Size = new System.Drawing.Size(712, 58);
+            this.textBoxPreprintedBarcode.Size = new System.Drawing.Size(534, 48);
             this.textBoxPreprintedBarcode.TabIndex = 0;
             this.textBoxPreprintedBarcode.TextChanged += new System.EventHandler(this.textBoxPreprintedBarcode_TextChanged);
             // 
@@ -237,10 +227,9 @@ namespace DNALabelSync
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 98);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 25);
+            this.label1.Size = new System.Drawing.Size(179, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Product Rating Barcode";
             // 
@@ -250,11 +239,10 @@ namespace DNALabelSync
             this.textBoxEngineBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxEngineBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEngineBarcode.Location = new System.Drawing.Point(262, 145);
-            this.textBoxEngineBarcode.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxEngineBarcode.Location = new System.Drawing.Point(196, 118);
             this.textBoxEngineBarcode.Multiline = true;
             this.textBoxEngineBarcode.Name = "textBoxEngineBarcode";
-            this.textBoxEngineBarcode.Size = new System.Drawing.Size(711, 54);
+            this.textBoxEngineBarcode.Size = new System.Drawing.Size(533, 45);
             this.textBoxEngineBarcode.TabIndex = 1;
             this.textBoxEngineBarcode.TextChanged += new System.EventHandler(this.textBoxEngineBarcode_TextChanged);
             // 
@@ -262,10 +250,9 @@ namespace DNALabelSync
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 164);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(41, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 25);
+            this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Engine Barcode:";
             // 
@@ -281,11 +268,9 @@ namespace DNALabelSync
             this.groupBox2.Controls.Add(this.dateTimePickerShipDate);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(16, 15);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(970, 156);
+            this.groupBox2.Size = new System.Drawing.Size(727, 127);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Shipper";
@@ -294,10 +279,9 @@ namespace DNALabelSync
             // 
             this.lblCurrentModel.AutoSize = true;
             this.lblCurrentModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentModel.Location = new System.Drawing.Point(241, 114);
-            this.lblCurrentModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCurrentModel.Location = new System.Drawing.Point(181, 93);
             this.lblCurrentModel.Name = "lblCurrentModel";
-            this.lblCurrentModel.Size = new System.Drawing.Size(48, 29);
+            this.lblCurrentModel.Size = new System.Drawing.Size(39, 24);
             this.lblCurrentModel.TabIndex = 38;
             this.lblCurrentModel.Text = "mn";
             // 
@@ -305,10 +289,9 @@ namespace DNALabelSync
             // 
             this.lblCurrentAssemblyLine.AutoSize = true;
             this.lblCurrentAssemblyLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentAssemblyLine.Location = new System.Drawing.Point(241, 65);
-            this.lblCurrentAssemblyLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCurrentAssemblyLine.Location = new System.Drawing.Point(181, 53);
             this.lblCurrentAssemblyLine.Name = "lblCurrentAssemblyLine";
-            this.lblCurrentAssemblyLine.Size = new System.Drawing.Size(34, 29);
+            this.lblCurrentAssemblyLine.Size = new System.Drawing.Size(26, 24);
             this.lblCurrentAssemblyLine.TabIndex = 37;
             this.lblCurrentAssemblyLine.Text = "al";
             // 
@@ -316,10 +299,9 @@ namespace DNALabelSync
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(49, 114);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(37, 93);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 25);
+            this.label8.Size = new System.Drawing.Size(84, 20);
             this.label8.TabIndex = 36;
             this.label8.Text = "Model No.:";
             // 
@@ -327,10 +309,9 @@ namespace DNALabelSync
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 70);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(9, 57);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 25);
+            this.label7.Size = new System.Drawing.Size(115, 20);
             this.label7.TabIndex = 35;
             this.label7.Text = "Assembly Line:";
             // 
@@ -338,10 +319,10 @@ namespace DNALabelSync
             // 
             this.checkBoxTestMode.AutoSize = true;
             this.checkBoxTestMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxTestMode.Location = new System.Drawing.Point(696, 17);
-            this.checkBoxTestMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxTestMode.Location = new System.Drawing.Point(522, 14);
+            this.checkBoxTestMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBoxTestMode.Name = "checkBoxTestMode";
-            this.checkBoxTestMode.Size = new System.Drawing.Size(128, 29);
+            this.checkBoxTestMode.Size = new System.Drawing.Size(103, 24);
             this.checkBoxTestMode.TabIndex = 34;
             this.checkBoxTestMode.Text = "Test Mode";
             this.checkBoxTestMode.UseVisualStyleBackColor = true;
@@ -350,20 +331,18 @@ namespace DNALabelSync
             // 
             this.dateTimePickerShipDate.Enabled = false;
             this.dateTimePickerShipDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerShipDate.Location = new System.Drawing.Point(281, 20);
-            this.dateTimePickerShipDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerShipDate.Location = new System.Drawing.Point(211, 16);
             this.dateTimePickerShipDate.Name = "dateTimePickerShipDate";
-            this.dateTimePickerShipDate.Size = new System.Drawing.Size(318, 30);
+            this.dateTimePickerShipDate.Size = new System.Drawing.Size(240, 26);
             this.dateTimePickerShipDate.TabIndex = 33;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 27);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(6, 22);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 25);
+            this.label6.Size = new System.Drawing.Size(128, 20);
             this.label6.TabIndex = 1;
             this.label6.Text = "Production Date:";
             // 
@@ -377,7 +356,7 @@ namespace DNALabelSync
             this.toolStripButtonPrinter});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(918, 31);
+            this.toolStrip3.Size = new System.Drawing.Size(689, 31);
             this.toolStrip3.TabIndex = 2;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -388,7 +367,7 @@ namespace DNALabelSync
             this.toolStripButtonRefresh.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRefresh.Image")));
             this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            this.toolStripButtonRefresh.Size = new System.Drawing.Size(91, 28);
+            this.toolStripButtonRefresh.Size = new System.Drawing.Size(79, 28);
             this.toolStripButtonRefresh.Text = "Refresh";
             this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
             // 
@@ -396,6 +375,17 @@ namespace DNALabelSync
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripButtonPrinter
+            // 
+            this.toolStripButtonPrinter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPrinter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPrinter.Image")));
+            this.toolStripButtonPrinter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPrinter.Name = "toolStripButtonPrinter";
+            this.toolStripButtonPrinter.Size = new System.Drawing.Size(28, 28);
+            this.toolStripButtonPrinter.Text = "Printer";
+            this.toolStripButtonPrinter.Visible = false;
+            this.toolStripButtonPrinter.Click += new System.EventHandler(this.toolStripButtonPrinter_Click);
             // 
             // tabControlResult
             // 
@@ -406,22 +396,20 @@ namespace DNALabelSync
             this.tabControlResult.Controls.Add(this.tabPageLabels);
             this.tabControlResult.Controls.Add(this.tabPage6);
             this.tabControlResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControlResult.Location = new System.Drawing.Point(4, 42);
-            this.tabControlResult.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlResult.Location = new System.Drawing.Point(3, 34);
             this.tabControlResult.Name = "tabControlResult";
             this.tabControlResult.SelectedIndex = 0;
-            this.tabControlResult.Size = new System.Drawing.Size(907, 647);
+            this.tabControlResult.Size = new System.Drawing.Size(681, 526);
             this.tabControlResult.TabIndex = 1;
             // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.richTextBoxMessages);
             this.tabPage7.ImageIndex = 0;
-            this.tabPage7.Location = new System.Drawing.Point(4, 34);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage7.Location = new System.Drawing.Point(4, 29);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage7.Size = new System.Drawing.Size(899, 609);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Size = new System.Drawing.Size(673, 493);
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "Messages";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -433,10 +421,9 @@ namespace DNALabelSync
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxMessages.ForeColor = System.Drawing.Color.Blue;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(0, 4);
-            this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBoxMessages.Location = new System.Drawing.Point(0, 3);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
-            this.richTextBoxMessages.Size = new System.Drawing.Size(1073, 630);
+            this.richTextBoxMessages.Size = new System.Drawing.Size(807, 513);
             this.richTextBoxMessages.TabIndex = 0;
             this.richTextBoxMessages.Text = "";
             // 
@@ -444,11 +431,10 @@ namespace DNALabelSync
             // 
             this.tabPageLabels.Controls.Add(this.webBrowserLabels);
             this.tabPageLabels.ImageIndex = 2;
-            this.tabPageLabels.Location = new System.Drawing.Point(4, 34);
-            this.tabPageLabels.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageLabels.Location = new System.Drawing.Point(4, 29);
             this.tabPageLabels.Name = "tabPageLabels";
-            this.tabPageLabels.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageLabels.Size = new System.Drawing.Size(899, 609);
+            this.tabPageLabels.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageLabels.Size = new System.Drawing.Size(672, 493);
             this.tabPageLabels.TabIndex = 2;
             this.tabPageLabels.Text = "Labels";
             this.tabPageLabels.UseVisualStyleBackColor = true;
@@ -456,11 +442,10 @@ namespace DNALabelSync
             // webBrowserLabels
             // 
             this.webBrowserLabels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserLabels.Location = new System.Drawing.Point(4, 4);
-            this.webBrowserLabels.Margin = new System.Windows.Forms.Padding(4);
-            this.webBrowserLabels.MinimumSize = new System.Drawing.Size(27, 25);
+            this.webBrowserLabels.Location = new System.Drawing.Point(3, 3);
+            this.webBrowserLabels.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserLabels.Name = "webBrowserLabels";
-            this.webBrowserLabels.Size = new System.Drawing.Size(891, 601);
+            this.webBrowserLabels.Size = new System.Drawing.Size(666, 487);
             this.webBrowserLabels.TabIndex = 0;
             // 
             // tabPage6
@@ -468,11 +453,10 @@ namespace DNALabelSync
             this.tabPage6.Controls.Add(this.dataGridViewLabelHistory);
             this.tabPage6.Controls.Add(this.toolStrip4);
             this.tabPage6.ImageIndex = 3;
-            this.tabPage6.Location = new System.Drawing.Point(4, 34);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage6.Location = new System.Drawing.Point(4, 29);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage6.Size = new System.Drawing.Size(899, 609);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage6.Size = new System.Drawing.Size(673, 493);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Label History";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -486,12 +470,11 @@ namespace DNALabelSync
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewLabelHistory.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewLabelHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLabelHistory.Location = new System.Drawing.Point(8, 34);
-            this.dataGridViewLabelHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewLabelHistory.Location = new System.Drawing.Point(6, 28);
             this.dataGridViewLabelHistory.Name = "dataGridViewLabelHistory";
             this.dataGridViewLabelHistory.ReadOnly = true;
             this.dataGridViewLabelHistory.RowHeadersWidth = 51;
-            this.dataGridViewLabelHistory.Size = new System.Drawing.Size(1005, 491);
+            this.dataGridViewLabelHistory.Size = new System.Drawing.Size(755, 399);
             this.dataGridViewLabelHistory.TabIndex = 1;
             // 
             // toolStrip4
@@ -499,9 +482,9 @@ namespace DNALabelSync
             this.toolStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonExportCSV});
-            this.toolStrip4.Location = new System.Drawing.Point(4, 4);
+            this.toolStrip4.Location = new System.Drawing.Point(3, 3);
             this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(891, 27);
+            this.toolStrip4.Size = new System.Drawing.Size(667, 27);
             this.toolStrip4.TabIndex = 0;
             this.toolStrip4.Text = "toolStrip4";
             // 
@@ -510,28 +493,17 @@ namespace DNALabelSync
             this.toolStripButtonExportCSV.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExportCSV.Image")));
             this.toolStripButtonExportCSV.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExportCSV.Name = "toolStripButtonExportCSV";
-            this.toolStripButtonExportCSV.Size = new System.Drawing.Size(106, 24);
+            this.toolStripButtonExportCSV.Size = new System.Drawing.Size(88, 24);
             this.toolStripButtonExportCSV.Text = "Export CSV";
             this.toolStripButtonExportCSV.Click += new System.EventHandler(this.toolStripButtonExportCSV_Click);
             // 
-            // toolStripButtonPrinter
-            // 
-            this.toolStripButtonPrinter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPrinter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPrinter.Image")));
-            this.toolStripButtonPrinter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPrinter.Name = "toolStripButtonPrinter";
-            this.toolStripButtonPrinter.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButtonPrinter.Text = "Printer";
-            this.toolStripButtonPrinter.Click += new System.EventHandler(this.toolStripButtonPrinter_Click);
-            // 
             // FrmSerialMatch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 689);
+            this.ClientSize = new System.Drawing.Size(1443, 560);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSerialMatch";
             this.Text = "FrmSerialMatch";
             this.Load += new System.EventHandler(this.FrmSerialMatch_Load);

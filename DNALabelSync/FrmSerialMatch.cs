@@ -35,14 +35,18 @@ namespace DNALabelSync
 
         private void LoadSerialTracker()
         {
-           
-            dataGridViewLabelHistory.DataSource = m_dataClass.LoadSerialTracker();
+            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker();
+            SortableBindingList<Serial_No__Tracker> lot = new SortableBindingList<Serial_No__Tracker>(listOfTracker);
+            dataGridViewLabelHistory.DataSource = lot;
         }
         private void FrmSerialMatch_Load(object sender, EventArgs e)
         {
             try
             {
                 m_dataClass.Connect(GlblSettings.ConnectionString);
+                tabControlResult.TabPages.Remove(tabControlResult.TabPages[0]);
+                tabControlResult.TabPages.Remove(tabControlResult.TabPages["tabPageLabels"]);
+
             }
             catch (Exception ex)
             {
@@ -301,7 +305,7 @@ namespace DNALabelSync
 
                                 //string modelNo, string serialNo, string departmentNo, string engineSerial, string upc,string description)
                                 GenerateLabel(GlblSettings.ModelNumber, preprintedBarcode, "D25P",serialNo  ,upc, description);
-                                dataGridViewLabelHistory.DataSource = m_dataClass.LoadSerialTracker();
+                                LoadSerialTracker();
                                 dataGridViewLabelHistory.Refresh();
                                 this.ActiveControl = textBoxPreprintedBarcode;
                             }

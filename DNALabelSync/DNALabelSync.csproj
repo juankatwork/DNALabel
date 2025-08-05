@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</InstallUrl>
     <UpdateUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</UpdateUrl>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -310,7 +310,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyComparer.cs" />
     <Compile Include="RawPrinterHelper.cs" />
+    <Compile Include="SortableBindingList.cs" />
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
