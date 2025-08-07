@@ -282,11 +282,12 @@ namespace DNALabelSync
                 return false;
             }
         }
-        public List<Serial_No__Tracker> LoadSerialTracker()
+        public List<Serial_No__Tracker> LoadSerialTracker(int lineNo)
         {
             try
             {
                 var query = from i in m_dnaDataContext.Serial_No__Trackers
+                            where i.Assembly_Line_No_ == lineNo
                             select i;
                 if (query.Count() > 0)
                     return query.ToList();

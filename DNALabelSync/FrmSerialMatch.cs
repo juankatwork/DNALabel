@@ -35,7 +35,7 @@ namespace DNALabelSync
 
         private void LoadSerialTracker()
         {
-            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker();
+            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker(int.Parse(GlblSettings.AssemblyLine));
             SortableBindingList<Serial_No__Tracker> lot = new SortableBindingList<Serial_No__Tracker>(listOfTracker);
             dataGridViewLabelHistory.DataSource = lot;
         }
@@ -113,7 +113,7 @@ namespace DNALabelSync
 
             if (ValidateDuplicateEngineLabel(serialNo))
             {
-                ErrorMessage = string.Format("Engine SerialNo '{0}' exist in database.", serialNo);
+                ErrorMessage = string.Format("Engine SerialNo '{0}' exist in database.\nNo. Serial '{0}' del Motor existe en la base de datos.", serialNo);
                 LogMsgToRichTextBox(ErrorMessage);
                 MessageBox.Show(ErrorMessage, "Error Dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CanPrintLabel = false;
@@ -125,7 +125,8 @@ namespace DNALabelSync
             {
                 if (serialNoIdentifier != modelNo)
                 {
-                    ErrorMessage = string.Format("Model {0}, does not match SerialNoIdentifier '{1}' from database Model '{2}",
+                    ErrorMessage = string.Format("Model {0}, does not match SerialNoIdentifier '{1}' from database Model '{2}\n" +
+                                                 "Modelo '{0}' no coincide con Numero Serial '{1}' del Modelo {2} de la base de datos.",
                                modelNo, serialNoIdentifier, GlblSettings.ModelNumber);
                     LogMsgToRichTextBox(ErrorMessage);
                     MessageBox.Show(ErrorMessage);
@@ -161,7 +162,7 @@ namespace DNALabelSync
                 {
                     u.SetLabelPathAndType(LabelPath,GlblSettings.CurrentLabelOutput);
                 }
-               
+                textBoxProductionDate.Text = DateTime.Today.ToShortDateString();
                 u.GlblSettings = GlblSettings;
                 u.GetLabel(fileName, modelNo, departmentNo, serialNo,upc, description);
                 ClearForm();
@@ -184,6 +185,7 @@ namespace DNALabelSync
                     lblStatus.ForeColor = Color.DarkGreen;
                     lblStatus.Text = "Success";
                 }
+                
             }
             catch(Exception ex)
             {
@@ -248,7 +250,7 @@ namespace DNALabelSync
                 {   
                     scanLabel = myTextBox.Text.Replace("\n", "").Replace("\r", "");
                     LblLastScanLabel.Text = scanLabel;
-                    msg = string.Format(@"Serial No: {0} exist in database.", scanLabel);
+                    msg = string.Format(@"Serial No: {0} exist in database.\n. Numero Serial '{0}' existe en la base de datos.", scanLabel);
                     LogMsgToRichTextBox(string.Format("Scan {0}", scanLabel));
 
                     if (ValidatePreprintedLabel(scanLabel))
@@ -267,7 +269,8 @@ namespace DNALabelSync
             }
             else
             {
-                msg = string.Format("The system can not print labels right now. Please check previous error message.");
+                msg = string.Format("The system can not print labels right now. Please check previous error message.\n" +
+                     "El systema no puede imprimir labels en este momento. Por favor refiera al previo error.");
                 LogMsgToRichTextBox(msg);
                 MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -311,7 +314,8 @@ namespace DNALabelSync
                             }
                             else
                             {
-                                msg = string.Format(@"Serial No: {0} does not match Engine Serial {1}", textBoxEngineBarcode.Text, serialNo);
+                                msg = string.Format(@"Serial No: {0} does not match Engine Serial {1}." + 
+                                      System.Environment.NewLine + "Numero Serial {0} no coincide con el serial del Motor '{1}'", textBoxEngineBarcode.Text, serialNo);
                                 LogMsgToRichTextBox(msg);
                                 MessageBox.Show(msg, "Error Dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 CanPrintLabel = false;
