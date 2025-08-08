@@ -35,9 +35,12 @@ namespace DNALabelSync
 
         private void LoadSerialTracker()
         {
-            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker(int.Parse(GlblSettings.AssemblyLine));
-            SortableBindingList<Serial_No__Tracker> lot = new SortableBindingList<Serial_No__Tracker>(listOfTracker);
-            dataGridViewLabelHistory.DataSource = lot;
+            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker(int.Parse(GlblSettings.AssemblyLine),true);
+            if (listOfTracker != null)
+            {
+                SortableBindingList<Serial_No__Tracker> lot = new SortableBindingList<Serial_No__Tracker>(listOfTracker);
+                dataGridViewLabelHistory.DataSource = lot;
+            }
         }
         private void FrmSerialMatch_Load(object sender, EventArgs e)
         {

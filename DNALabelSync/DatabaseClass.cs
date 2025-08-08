@@ -303,6 +303,49 @@ namespace DNALabelSync
                 return null;
             }
         }
+        public List<Serial_No__Tracker> LoadSerialTracker(int lineNo,bool today)
+        {
+            DateTime CurrentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            try
+            {
+                var query = from i in m_dnaDataContext.Serial_No__Trackers
+                            where i.Assembly_Line_No_ == lineNo &&  (i.Production_Date_Time >= CurrentDate)
+                            select i;
+                if (query.Count() > 0)
+                    return query.ToList();
+                else
+                {
+                    ErrorMessage = "No data.";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = string.Format("Source={0}, Message={1}.", ex.Source, ex.Message);
+                return null;
+            }
+        }
+        public List<Serial_No__Tracker> LoadSerialTracker()
+        {
+            try
+            {
+                var query = from i in m_dnaDataContext.Serial_No__Trackers
+                          
+                            select i;
+                if (query.Count() > 0)
+                    return query.ToList();
+                else
+                {
+                    ErrorMessage = "No data.";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = string.Format("Source={0}, Message={1}.", ex.Source, ex.Message);
+                return null;
+            }
+        }
 
     }
 }
