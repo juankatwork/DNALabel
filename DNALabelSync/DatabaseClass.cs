@@ -249,12 +249,13 @@ namespace DNALabelSync
             }
         }
 
-        public bool EngineNoExist(string EngineNo)
+        public bool EngineNoExist(string EngineNo,string ItemModel)
         {
             try
             {
                 var lEngineNo = (from i in m_dnaDataContext.Serial_No__Trackers
                                  where i.Engine_Serial_No_ == EngineNo
+                                   && i.Item_Model_Number== ItemModel
                                  select i).FirstOrDefault();
                 if (lEngineNo != null)
                     return true;

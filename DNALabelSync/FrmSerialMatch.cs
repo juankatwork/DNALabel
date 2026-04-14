@@ -90,9 +90,9 @@ namespace DNALabelSync
             }
             return false;
         }
-        private bool ValidateDuplicateEngineLabel(string labelText)
+        private bool ValidateDuplicateEngineLabel(string labelText,string ItemModel)
         {
-            if (m_dataClass.EngineNoExist(labelText))
+            if (m_dataClass.EngineNoExist(labelText,ItemModel))
             {
                 return true;
             }
@@ -114,9 +114,9 @@ namespace DNALabelSync
                 return true; 
             }
 
-            if (ValidateDuplicateEngineLabel(serialNo))
+            if (ValidateDuplicateEngineLabel(serialNo, modelNo))
             {
-                ErrorMessage = string.Format("Engine SerialNo '{0}' exist in database.\nNo. Serial '{0}' del Motor existe en la base de datos.", serialNo);
+                ErrorMessage = string.Format("Engine SerialNo '{0}' for '{1}' exist in database.\nNo. Serial '{0}' para el articulo '{1}' del Motor existe en la base de datos.", serialNo,modelNo);
                 LogMsgToRichTextBox(ErrorMessage);
                 MessageBox.Show(ErrorMessage, "Error Dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CanPrintLabel = false;
