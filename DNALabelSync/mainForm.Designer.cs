@@ -61,7 +61,7 @@ namespace DNALabelSync
             this.toolStripButtonAbout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -70,7 +70,7 @@ namespace DNALabelSync
             this.toolStripButtonLoadSerialMatch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLoadSerialMatch.Image")));
             this.toolStripButtonLoadSerialMatch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadSerialMatch.Name = "toolStripButtonLoadSerialMatch";
-            this.toolStripButtonLoadSerialMatch.Size = new System.Drawing.Size(96, 24);
+            this.toolStripButtonLoadSerialMatch.Size = new System.Drawing.Size(115, 24);
             this.toolStripButtonLoadSerialMatch.Text = "Serial Match";
             this.toolStripButtonLoadSerialMatch.Click += new System.EventHandler(this.toolStripButtonLoadSerialMatch_Click);
             // 
@@ -84,7 +84,7 @@ namespace DNALabelSync
             this.toolStripButtonSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSettings.Image")));
             this.toolStripButtonSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSettings.Name = "toolStripButtonSettings";
-            this.toolStripButtonSettings.Size = new System.Drawing.Size(73, 24);
+            this.toolStripButtonSettings.Size = new System.Drawing.Size(86, 24);
             this.toolStripButtonSettings.Text = "&Settings";
             this.toolStripButtonSettings.Click += new System.EventHandler(this.toolStripButtonSettings_Click);
             // 
@@ -98,7 +98,7 @@ namespace DNALabelSync
             this.toolStripButtonLoadAssemblyLine.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLoadAssemblyLine.Image")));
             this.toolStripButtonLoadAssemblyLine.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadAssemblyLine.Name = "toolStripButtonLoadAssemblyLine";
-            this.toolStripButtonLoadAssemblyLine.Size = new System.Drawing.Size(107, 24);
+            this.toolStripButtonLoadAssemblyLine.Size = new System.Drawing.Size(127, 24);
             this.toolStripButtonLoadAssemblyLine.Text = "Assembly Line";
             this.toolStripButtonLoadAssemblyLine.Click += new System.EventHandler(this.toolStripButtonLoadAssemblyLine_Click);
             // 
@@ -112,7 +112,7 @@ namespace DNALabelSync
             this.toolStripButtonLoadItemMaster.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLoadItemMaster.Image")));
             this.toolStripButtonLoadItemMaster.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadItemMaster.Name = "toolStripButtonLoadItemMaster";
-            this.toolStripButtonLoadItemMaster.Size = new System.Drawing.Size(94, 24);
+            this.toolStripButtonLoadItemMaster.Size = new System.Drawing.Size(112, 24);
             this.toolStripButtonLoadItemMaster.Text = "Item &Master";
             this.toolStripButtonLoadItemMaster.Click += new System.EventHandler(this.toolStripButtonLoadItemMaster_Click);
             // 
@@ -126,38 +126,41 @@ namespace DNALabelSync
             this.toolStripButtonAbout.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAbout.Image")));
             this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAbout.Name = "toolStripButtonAbout";
-            this.toolStripButtonAbout.Size = new System.Drawing.Size(73, 24);
+            this.toolStripButtonAbout.Size = new System.Drawing.Size(83, 24);
             this.toolStripButtonAbout.Text = "About...";
             this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(63, 20);
             this.toolStripStatusLabel1.Text = "Loading";
             // 
             // mainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "mainForm";
-            this.Text = "DNA Label Match";
+            this.Text = "DNA Label Match (4/2026)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.toolStrip1.ResumeLayout(false);
