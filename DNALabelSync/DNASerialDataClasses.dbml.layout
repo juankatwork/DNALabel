@@ -14,17 +14,17 @@
         <elementListCompartment Id="a4632bb2-c693-4171-9a98-f8542c4668b8" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c10160d5-e5dd-4303-8e66-9d5dc1b0a7ed" absoluteBounds="4, 2.625, 2, 1.9631982421875">
+    <classShape Id="9a6a0f4d-615b-4f6a-8f52-153fd314ef2c" absoluteBounds="4.125, 2.875, 2, 1.9631982421875">
       <DataClassMoniker Name="/DNASerialDataClassesDataContext/Serial_No__Tracker" />
       <nestedChildShapes>
-        <elementListCompartment Id="d5cbc38a-ff24-4f83-a8a7-d47534dbeee6" absoluteBounds="4.015, 3.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c076f4c7-cc83-48cb-9e24-010440ed730b" absoluteBounds="4.14, 3.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.9374995); (5 : 1.9374995); (5 : 2.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (5.125 : 1.94314697265625); (5.125 : 2.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DNASerialDataClassesDataContext/AssemblyLineInformation/AssemblyLineInformation_Serial_No__Tracker" />
       <nodes>
         <classShapeMoniker Id="ca736e08-6ca9-47e8-a198-a728fe5ea9be" />
-        <classShapeMoniker Id="c10160d5-e5dd-4303-8e66-9d5dc1b0a7ed" />
+        <classShapeMoniker Id="9a6a0f4d-615b-4f6a-8f52-153fd314ef2c" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

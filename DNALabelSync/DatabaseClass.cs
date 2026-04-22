@@ -231,12 +231,13 @@ namespace DNALabelSync
         }
        
         //Transactions
-        public bool SerialNoExist(string SerialNo)
+        public bool SerialNoExist(string SerialNo, string ItemModel)
         {
             try
             {
                 var lSerialNo = (from i in m_dnaDataContext.Serial_No__Trackers
-                                 where i.Serial_No_ == SerialNo
+                                 where i.Serial_No_ == SerialNo 
+                                     && i.Item_Model_Number == ItemModel
                                  select i).FirstOrDefault();
                 if (lSerialNo != null)
                     return true;

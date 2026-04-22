@@ -516,7 +516,7 @@ namespace DNALabelSync
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Item Model Number]", Storage="_Item_Model_Number", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Item Model Number]", Storage="_Item_Model_Number", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string Item_Model_Number
 		{
 			get

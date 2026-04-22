@@ -84,7 +84,7 @@ namespace DNALabelSync
 
         private bool ValidatePreprintedLabel(string labelText)
         {
-            if (m_dataClass.SerialNoExist(labelText))
+            if (m_dataClass.SerialNoExist(labelText,GlblSettings.ModelNumber))
             {
                 return true;
             }
@@ -291,7 +291,7 @@ namespace DNALabelSync
             string preprintedBarcode = string.Empty;
             if (!IsHandle)
             {
-                if (CanPrintLabel)
+                    if (CanPrintLabel)
                 {
                     if (myTextBox.Text.EndsWith("\r") || myTextBox.Text.EndsWith("\n"))
                     {
