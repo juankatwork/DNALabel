@@ -307,7 +307,12 @@ namespace DNALabelSync
         }
         public List<Serial_No__Tracker> LoadSerialTracker(int lineNo,bool today)
         {
-            DateTime CurrentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime CurrentDate;
+            CurrentDate = new DateTime(2000, 1, 1);
+            if (today)
+            {
+                 CurrentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            }
             try
             {
                 var query = from i in m_dnaDataContext.Serial_No__Trackers
@@ -327,6 +332,8 @@ namespace DNALabelSync
                 return null;
             }
         }
+       
+
         public List<Serial_No__Tracker> LoadSerialTracker()
         {
             try

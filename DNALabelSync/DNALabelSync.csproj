@@ -28,7 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</InstallUrl>
     <UpdateUrl>https://raw.githubusercontent.com/juankatwork/DNALabel/refs/heads/master/DNALabelSync/publish/</UpdateUrl>
-    <ApplicationRevision>56</ApplicationRevision>
+    <ApplicationRevision>57</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -57,10 +57,10 @@
     <ApplicationIcon>shipping_blue.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E25CD5A918E8A0F0F1E6CF0EDA677F369CCEA1D5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E43EBC40B47720722123D447572D5F12EAADDE42</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DNALabelSync_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DNALabelSync_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -347,6 +347,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DNALabelSync_1_TemporaryKey.pfx" />
     <None Include="DNALabelSync_TemporaryKey.pfx" />
     <None Include="DNASerialDataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

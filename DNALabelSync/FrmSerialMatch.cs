@@ -26,6 +26,7 @@ namespace DNALabelSync
         bool IsHandle = false;
         bool CanPrintLabel = false;
         bool IsDatabaseLoggedIn = false;
+        int LabelCount = 0;
         public FrmSerialMatch()
         {
             InitializeComponent();
@@ -40,6 +41,8 @@ namespace DNALabelSync
             {
                 SortableBindingList<Serial_No__Tracker> lot = new SortableBindingList<Serial_No__Tracker>(listOfTracker);
                 dataGridViewLabelHistory.DataSource = lot;
+                LabelCount = lot.Count();
+                labelCountToday.Text = string.Format("{0}", LabelCount);
             }
         }
         private void FrmSerialMatch_Load(object sender, EventArgs e)
@@ -71,6 +74,7 @@ namespace DNALabelSync
                 this.ActiveControl = textBoxPreprintedBarcode;
                 this.textBoxPreprintedBarcode.Focus();
                 LoadSerialTracker();
+                
                 IsDatabaseLoggedIn = true;
                 CanPrintLabel = true;
                 lblCurrentAssemblyLine.Text = GlblSettings.AssemblyLine;
@@ -84,7 +88,7 @@ namespace DNALabelSync
 
         private bool ValidatePreprintedLabel(string labelText)
         {
-            if (m_dataClass.SerialNoExist(labelText,GlblSettings.ModelNumber))
+                if (m_dataClass.SerialNoExist(labelText,GlblSettings.ModelNumber))
             {
                 return true;
             }
