@@ -251,7 +251,7 @@ namespace DNALabelSync
         {
             return new StandardValuesCollection(new string[] {"Standard3x2",
                                                  "6x4UPC",
-                                                 "LabelType3"});
+                                                 "3x2ModelSerial"});
 
         }
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)

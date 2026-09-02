@@ -123,7 +123,10 @@ namespace DNALabelSync
                         SplitDescription(description,ref description1,ref description2);
                         label = string.Format(File.ReadAllText(m_labelPath), modelNo, description1,description2 , serialNo,upc);
                         break;
-                    default:
+                    case "3x2ModelSerial":
+                        label= string.Format(File.ReadAllText(m_labelPath), modelNo, serialNo);
+                        break;
+                     default:
                         throw new Exception(string.Format("LabelType '{0}' not supported",m_labelType));
 
                 }
