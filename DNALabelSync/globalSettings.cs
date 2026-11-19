@@ -18,12 +18,9 @@ namespace DNALabelSync
         private string m_ModelNumber;
         private string m_WorkDirectory;
         private string m_PrinterName;
-        private string m_outputLabel1;
-        private string m_outputLabel2;
-        private string m_outputLabel3;
         private string m_CurrLabelOutput;
         private string m_CurrLabelSize;
-        private bool m_SendToPrinter;
+        private bool m_DoNotPrint;
         private string m_Label3x2Url = @"http://api.labelary.com/v1/printers/8dpmm/labels/3x2/0/";
         private string m_Label6x4Url = @"http://api.labelary.com/v1/printers/8dpmm/labels/6x4/0/";
         private String m_CurrentPrintOption;
@@ -68,6 +65,13 @@ namespace DNALabelSync
             set { m_PrinterName = value; }
             get { return m_PrinterName; }
         }
+        [CategoryAttribute("Daily Configuration"), DescriptionAttribute("Suppress Printing")]
+        public bool SuppressPrinting
+        {
+            set { m_DoNotPrint = value; }
+            get { return m_DoNotPrint; }
+        }
+
         [CategoryAttribute("Daily Configuration"), DescriptionAttribute("Use Iron Print PDF")]
         public bool UsuIronPrintPDF
         {
@@ -106,6 +110,35 @@ namespace DNALabelSync
             get { return m_CurrLabelSize; }
             set { m_CurrLabelSize = value; }
         }
+
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Environment")]
+        public string BCEnvironment
+        {
+            set; get;
+        }
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Tenant Id")]
+        public string BCTenantId
+        {
+            set; get;
+        }
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Company Id")]
+        public string BCCompanyId
+        {
+            set; get;
+        }
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Client Id")]
+        public string BCClientId
+        {
+            set; get;
+        }
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Client Secret")]
+        public string BCClientSecret
+        {
+            set; get;
+        }
+        [CategoryAttribute("Business Central"), DescriptionAttribute("Access Token")]
+        public string AccessToken { set; get; }
+
     }
    
     [Serializable]

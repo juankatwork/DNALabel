@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
+using System.Management;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Interop;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
 namespace DNALabelSync
 {
     public partial class FrmSerialMatch : Form
     {
         private DatabaseClass m_dataClass = new DatabaseClass();
+        BCConnect bc = new BCConnect();
         public GlobalSettings GlblSettings
         {
             set;
@@ -45,14 +41,12 @@ namespace DNALabelSync
                 labelCountToday.Text = string.Format("{0}", LabelCount);
             }
         }
-        private void FrmSerialMatch_Load(object sender, EventArgs e)
+        private async void FrmSerialMatch_Load(object sender, EventArgs e)
         {
             try
             {
                 m_dataClass.Connect(GlblSettings.ConnectionString);
-                tabControlResult.TabPages.Remove(tabControlResult.TabPages[0]);
-                tabControlResult.TabPages.Remove(tabControlResult.TabPages["tabPageLabels"]);
-
+              
             }
             catch (Exception ex)
             {
@@ -70,7 +64,6 @@ namespace DNALabelSync
             else
             {
                 LogMsgToRichTextBox(string.Format("Connected to {0}", GlblSettings.ConnectionString));
-                RefreshDir();
                 this.ActiveControl = textBoxPreprintedBarcode;
                 this.textBoxPreprintedBarcode.Focus();
                 LoadSerialTracker();
@@ -79,6 +72,16 @@ namespace DNALabelSync
                 CanPrintLabel = true;
                 lblCurrentAssemblyLine.Text = GlblSettings.AssemblyLine;
                 lblCurrentModel.Text = GlblSettings.ModelNumber;
+            }
+           
+            bc.GlblSettings = GlblSettings;
+            if (await bc.GetAccessToken())
+            {
+                toolStripStatusLabel1.Text = "Access Token retrieved successfully.";
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "Failed to retrieve Access Token.";
             }
 
         }
@@ -155,7 +158,7 @@ namespace DNALabelSync
        
 
        
-        private void GenerateLabel(string modelNo, string serialNo, string departmentNo, string engineSerial, string upc,string description)
+        private async Task GenerateLabel(string modelNo, string serialNo, string departmentNo, string engineSerial, string upc,string description)
         {
             string LabelPath = string.Empty;
             try
@@ -191,6 +194,19 @@ namespace DNALabelSync
                 {
                     lblStatus.ForeColor = Color.DarkGreen;
                     lblStatus.Text = "Success";
+                    if (GlblSettings.SuppressPrinting)
+                    {
+                        lblStatus.Text = "Success - Label printing disabled.";
+                    }
+                    BcApiResult result = await bc.PostSerialTrackerToBusinessCentral(slt);
+                    if (result.Success )
+                    {
+                        toolStripStatusLabel1.Text = result.Message;
+                    }
+                    else
+                    {
+                        toolStripStatusLabel1.Text = result.Message;
+                    }
                 }
                 
             }
@@ -211,28 +227,7 @@ namespace DNALabelSync
             }
         }
 
-        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
-        {
-            RefreshDir();
-        }
-        private void RefreshDir()
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(GlblSettings.WorkDirectory) && Directory.Exists(GlblSettings.WorkDirectory))
-                {
-                    webBrowserLabels.Navigate(GlblSettings.WorkDirectory);
-                }
-                else
-                {
-                    richTextBoxMessages.Text += string.Format("PDF label directory '{0}' does not exist.{1}. Please set it up in options page.", GlblSettings.WorkDirectory, System.Environment.NewLine);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Set up label and work directory", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+       
 
         private void buttonClearFields_Click(object sender, EventArgs e)
         {
@@ -314,7 +309,7 @@ namespace DNALabelSync
                                 LogMsgToRichTextBox(string.Format("Generating Label {0}", preprintedBarcode));
 
                                 //string modelNo, string serialNo, string departmentNo, string engineSerial, string upc,string description)
-                                GenerateLabel(GlblSettings.ModelNumber, preprintedBarcode, "D25P",serialNo  ,upc, description);
+                                var r =  GenerateLabel(GlblSettings.ModelNumber, preprintedBarcode, "D25P",serialNo  ,upc, description);
                                 LoadSerialTracker();
                                 dataGridViewLabelHistory.Refresh();
                                 this.ActiveControl = textBoxPreprintedBarcode;
@@ -344,9 +339,6 @@ namespace DNALabelSync
         {
             try
             {
-                richTextBoxMessages.AppendText(msg);
-                richTextBoxMessages.AppendText(System.Environment.NewLine);
-                richTextBoxMessages.ScrollToCaret();
                 string msg1 = string.Format("{0} - User='{1}' Msg='{2}{3}", DateTime.Now, Environment.UserName , msg, System.Environment.NewLine);
                 File.AppendAllText(string.Format(@"{0}\DNALabelSync.log", GlblSettings.WorkDirectory), msg1);
             }
@@ -375,5 +367,38 @@ namespace DNALabelSync
                 RawPrinterHelper.SendFileToPrinter(GlblSettings.PrinterName, @"C:\work\Labels\LJK.pdf");
             }
         }
+
+        private async void toolStripButtonTransmit_Click(object sender, EventArgs e)
+        {
+            List<Serial_No__Tracker> listOfTracker = m_dataClass.LoadSerialTracker();
+            bool AllSent = false;
+            int i = 0;
+            int sent = 0;
+            BcApiResult result = new BcApiResult();
+            if (listOfTracker != null)
+            {
+                foreach(Serial_No__Tracker tracker in listOfTracker)
+                {
+                    i++;
+                   result =  await bc.PostSerialTrackerToBusinessCentral(tracker);
+                    if (result.Success)
+                    {
+                        toolStripStatusLabel1.Text = result.Message;
+                        sent++;
+                    }
+                    else
+                    {
+                        toolStripStatusLabel1.Text = result.Message;
+                    }
+                }
+                if (sent < i)
+                {
+                    MessageBox.Show("Error Sending data to BC: " + result.Message);
+                }
+            }
+
+           
+        }
+       
     }
 }

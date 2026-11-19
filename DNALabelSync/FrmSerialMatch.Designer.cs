@@ -32,6 +32,8 @@ namespace DNALabelSync
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSerialMatch));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelCountToday = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.LblLastScanLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,17 +58,14 @@ namespace DNALabelSync
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonPrinter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonTransmit = new System.Windows.Forms.ToolStripButton();
             this.tabControlResult = new System.Windows.Forms.TabControl();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.richTextBoxMessages = new System.Windows.Forms.RichTextBox();
-            this.tabPageLabels = new System.Windows.Forms.TabPage();
-            this.webBrowserLabels = new System.Windows.Forms.WebBrowser();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridViewLabelHistory = new System.Windows.Forms.DataGridView();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonExportCSV = new System.Windows.Forms.ToolStripButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.labelCountToday = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,9 +74,8 @@ namespace DNALabelSync
             this.groupBox2.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.tabControlResult.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPageLabels.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabelHistory)).BeginInit();
             this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
@@ -129,11 +127,30 @@ namespace DNALabelSync
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Label Information";
             // 
+            // labelCountToday
+            // 
+            this.labelCountToday.AutoSize = true;
+            this.labelCountToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCountToday.Location = new System.Drawing.Point(160, 441);
+            this.labelCountToday.Name = "labelCountToday";
+            this.labelCountToday.Size = new System.Drawing.Size(25, 26);
+            this.labelCountToday.TabIndex = 17;
+            this.labelCountToday.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 441);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(142, 20);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Label Count Today";
+            // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(193, 362);
+            this.lblStatus.Location = new System.Drawing.Point(192, 329);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(101, 26);
@@ -162,7 +179,7 @@ namespace DNALabelSync
             // buttonClearFields
             // 
             this.buttonClearFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClearFields.Location = new System.Drawing.Point(518, 352);
+            this.buttonClearFields.Location = new System.Drawing.Point(487, 380);
             this.buttonClearFields.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClearFields.Name = "buttonClearFields";
             this.buttonClearFields.Size = new System.Drawing.Size(136, 41);
@@ -357,7 +374,8 @@ namespace DNALabelSync
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonRefresh,
             this.toolStripSeparator9,
-            this.toolStripButtonPrinter});
+            this.toolStripButtonPrinter,
+            this.toolStripButtonTransmit});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(591, 31);
@@ -373,7 +391,6 @@ namespace DNALabelSync
             this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             this.toolStripButtonRefresh.Size = new System.Drawing.Size(79, 28);
             this.toolStripButtonRefresh.Text = "Refresh";
-            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
             // 
             // toolStripSeparator9
             // 
@@ -391,13 +408,20 @@ namespace DNALabelSync
             this.toolStripButtonPrinter.Visible = false;
             this.toolStripButtonPrinter.Click += new System.EventHandler(this.toolStripButtonPrinter_Click);
             // 
+            // toolStripButtonTransmit
+            // 
+            this.toolStripButtonTransmit.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTransmit.Image")));
+            this.toolStripButtonTransmit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonTransmit.Name = "toolStripButtonTransmit";
+            this.toolStripButtonTransmit.Size = new System.Drawing.Size(81, 28);
+            this.toolStripButtonTransmit.Text = "Transmit";
+            this.toolStripButtonTransmit.Click += new System.EventHandler(this.toolStripButtonTransmit_Click);
+            // 
             // tabControlResult
             // 
             this.tabControlResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlResult.Controls.Add(this.tabPage7);
-            this.tabControlResult.Controls.Add(this.tabPageLabels);
             this.tabControlResult.Controls.Add(this.tabPage6);
             this.tabControlResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlResult.Location = new System.Drawing.Point(3, 34);
@@ -406,64 +430,34 @@ namespace DNALabelSync
             this.tabControlResult.Size = new System.Drawing.Size(582, 617);
             this.tabControlResult.TabIndex = 1;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.richTextBoxMessages);
-            this.tabPage7.ImageIndex = 0;
-            this.tabPage7.Location = new System.Drawing.Point(4, 29);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(574, 584);
-            this.tabPage7.TabIndex = 0;
-            this.tabPage7.Text = "Messages";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxMessages
-            // 
-            this.richTextBoxMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMessages.ForeColor = System.Drawing.Color.Blue;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(0, 3);
-            this.richTextBoxMessages.Name = "richTextBoxMessages";
-            this.richTextBoxMessages.Size = new System.Drawing.Size(709, 604);
-            this.richTextBoxMessages.TabIndex = 0;
-            this.richTextBoxMessages.Text = "";
-            // 
-            // tabPageLabels
-            // 
-            this.tabPageLabels.Controls.Add(this.webBrowserLabels);
-            this.tabPageLabels.ImageIndex = 2;
-            this.tabPageLabels.Location = new System.Drawing.Point(4, 29);
-            this.tabPageLabels.Name = "tabPageLabels";
-            this.tabPageLabels.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLabels.Size = new System.Drawing.Size(534, 493);
-            this.tabPageLabels.TabIndex = 2;
-            this.tabPageLabels.Text = "Labels";
-            this.tabPageLabels.UseVisualStyleBackColor = true;
-            // 
-            // webBrowserLabels
-            // 
-            this.webBrowserLabels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserLabels.Location = new System.Drawing.Point(3, 3);
-            this.webBrowserLabels.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserLabels.Name = "webBrowserLabels";
-            this.webBrowserLabels.Size = new System.Drawing.Size(528, 487);
-            this.webBrowserLabels.TabIndex = 0;
-            // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.statusStrip1);
             this.tabPage6.Controls.Add(this.dataGridViewLabelHistory);
             this.tabPage6.Controls.Add(this.toolStrip4);
             this.tabPage6.ImageIndex = 3;
             this.tabPage6.Location = new System.Drawing.Point(4, 29);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(534, 493);
+            this.tabPage6.Size = new System.Drawing.Size(574, 584);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Label History";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(3, 559);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(568, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // dataGridViewLabelHistory
             // 
@@ -478,7 +472,7 @@ namespace DNALabelSync
             this.dataGridViewLabelHistory.Name = "dataGridViewLabelHistory";
             this.dataGridViewLabelHistory.ReadOnly = true;
             this.dataGridViewLabelHistory.RowHeadersWidth = 51;
-            this.dataGridViewLabelHistory.Size = new System.Drawing.Size(755, 399);
+            this.dataGridViewLabelHistory.Size = new System.Drawing.Size(562, 515);
             this.dataGridViewLabelHistory.TabIndex = 1;
             // 
             // toolStrip4
@@ -488,7 +482,7 @@ namespace DNALabelSync
             this.toolStripButtonExportCSV});
             this.toolStrip4.Location = new System.Drawing.Point(3, 3);
             this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(528, 27);
+            this.toolStrip4.Size = new System.Drawing.Size(568, 27);
             this.toolStrip4.TabIndex = 0;
             this.toolStrip4.Text = "toolStrip4";
             // 
@@ -500,25 +494,6 @@ namespace DNALabelSync
             this.toolStripButtonExportCSV.Size = new System.Drawing.Size(88, 24);
             this.toolStripButtonExportCSV.Text = "Export CSV";
             this.toolStripButtonExportCSV.Click += new System.EventHandler(this.toolStripButtonExportCSV_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 441);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 20);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Label Count Today";
-            // 
-            // labelCountToday
-            // 
-            this.labelCountToday.AutoSize = true;
-            this.labelCountToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCountToday.Location = new System.Drawing.Point(160, 441);
-            this.labelCountToday.Name = "labelCountToday";
-            this.labelCountToday.Size = new System.Drawing.Size(25, 26);
-            this.labelCountToday.TabIndex = 17;
-            this.labelCountToday.Text = "0";
             // 
             // FrmSerialMatch
             // 
@@ -542,10 +517,10 @@ namespace DNALabelSync
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.tabControlResult.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPageLabels.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLabelHistory)).EndInit();
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
@@ -568,10 +543,6 @@ namespace DNALabelSync
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.TabControl tabControlResult;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.RichTextBox richTextBoxMessages;
-        private System.Windows.Forms.TabPage tabPageLabels;
-        private System.Windows.Forms.WebBrowser webBrowserLabels;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DataGridView dataGridViewLabelHistory;
         private System.Windows.Forms.ToolStrip toolStrip4;
@@ -592,5 +563,8 @@ namespace DNALabelSync
         private System.Windows.Forms.ToolStripButton toolStripButtonPrinter;
         private System.Windows.Forms.Label labelCountToday;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripButton toolStripButtonTransmit;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

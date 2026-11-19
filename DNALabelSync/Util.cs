@@ -182,8 +182,12 @@ namespace DNALabelSync
 
         public bool SendToPrinter(string fileName, int labelDelay, ref string ErrorMessage)
         {
+            if (GlblSettings.SuppressPrinting)
+            {
+                return true;
+            }
 
-          if (GlblSettings.UsuIronPrintPDF)
+                if (GlblSettings.UsuIronPrintPDF)
             {
                 return SendToPrinterIron(fileName, labelDelay, ref ErrorMessage);
             }
