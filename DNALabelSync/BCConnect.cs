@@ -21,18 +21,15 @@ namespace DNALabelSync
             get;
         }
         private GlobalSettingsMgr _settingsMgr = null;
-        string tenantId = "2f9111ab-7034-4cb0-9bda-644a4f79febc";
-        string clientId = "a7271096-c240-43ad-8929-4ec8dcf2aeab";
-        string clientSecret = "c_e8Q~GCe9Rm5GBAiWSXzKERuG-ghYyqQppNXbvw";
 
         public async Task<bool> GetAccessToken()
         {
             // Business Central's resource scope
             string[] scopes = new[] { "https://api.businesscentral.dynamics.com/.default" };
 
-            var app = ConfidentialClientApplicationBuilder.Create(clientId)
-                .WithClientSecret(clientSecret)
-                .WithAuthority(new Uri($"https://login.microsoftonline.com/{tenantId}"))
+            var app = ConfidentialClientApplicationBuilder.Create(GlblSettings.BCClientId)
+                .WithClientSecret(GlblSettings.BCClientSecret)
+                .WithAuthority(new Uri($"https://login.microsoftonline.com/{GlblSettings.BCTenantId}"))
                 .Build();
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5)); // 5 second timeout
             _settingsMgr = new GlobalSettingsMgr();
